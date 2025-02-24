@@ -53,7 +53,7 @@ public class newcontact extends Baza{
         lastName.sendKeys("Oicescu");
         birthdate.sendKeys("2003-11-19");
         email.sendKeys("alexandrescu.oicescu@gmail.com");
-        phone.sendKeys("07noidoi");
+        phone.sendKeys("07222231123");
         street1.sendKeys("Aleea Pasarea in Vazduh nr 3");
         street2.sendKeys(" ");
         city.sendKeys("Buguresti");
