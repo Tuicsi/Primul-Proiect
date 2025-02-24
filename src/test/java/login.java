@@ -28,7 +28,7 @@ public class login {
     @DisplayName("Verifică titlul paginii principale")
     void testPageSignUp() {
        
-        driver.get("https://thinking-tester-contact-list.herokuapp.com/");
+        driver.get("https://thinking-tester-contact-list.herokuapp.com");
         String expectedTitle = "Contact List App";
         String actualTitle = driver.getTitle();
         assertEquals(expectedTitle, actualTitle, "Titlul paginii nu este cel așteptat!");
@@ -41,6 +41,7 @@ public class login {
 
         WebElement submit = driver.findElement(By.id("submit"));
         submit.click();
+        
         
         };  
     }
