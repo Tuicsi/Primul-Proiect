@@ -7,15 +7,47 @@ import org.junit.jupiter.api.Test;
 
 public class ApiUpdateContact extends ApiCreateContact {
 
-    private static String baseurl = "https://thinking-tester-contact-list.herokuapp.com/contacts";
 
     @BeforeEach
     public void setupBeforeUpdate() {
-        // Asigurăm că autentificarea și crearea contactului sunt realizate înainte de update
+        
         if (createdContactId == null) {
-            createContact(); // Dacă contactul nu este deja creat, îl creăm
+            createContact(); 
         }
-        authenticate(); // Autentificare o singură dată
+    }
+
+    public void createContact() {
+        // Dacă contactul a fost deja creat, nu mai facem nimic
+        if (createdContactId != null) {
+            System.out.println("Contact-ul este deja creat, uite aici ID-ul: " + createdContactId);
+            return; // Nu mai creăm contactul
+        }
+
+        // Datele pentru crearea contactului
+        String contactData = "{"
+                + "\"firstName\": \"John\","
+                + "\"lastName\": \"Doe\","
+                + "\"phone\": \"0721112233\","
+                + "\"city\": \"Bucuresti\""
+                + "}";
+
+        // Trimitem cererea de creare a contactului
+        Response createResponse = RestAssured.given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer " + authToken)
+                .body(contactData)
+                .post(baseurl);
+
+        // Verificăm dacă răspunsul este 201 (Created)
+        Assertions.assertEquals(201, createResponse.getStatusCode(), "Crearea contactului a eșuat!");
+
+        // Obținem ID-ul contactului creat
+        createdContactId = createResponse.jsonPath().getString("_id");
+
+        // Verificăm că ID-ul este valid
+        Assertions.assertNotNull(createdContactId, "ID-ul contactului nu a fost setat corect!");
+
+        System.out.println("Contactul a fost creat cu ID-ul: " + createdContactId);
     }
 
     @Test
@@ -38,10 +70,6 @@ public class ApiUpdateContact extends ApiCreateContact {
             .header("Authorization", "Bearer " + authToken)
             .body(updateContact)
             .patch(baseurl + "/" + createdContactId);
-
-        // Verificăm statusul și răspunsul
-        System.out.println("Status code update: " + updateResponse.getStatusCode());
-        System.out.println("Response body update (formatat):\n" + updateResponse.prettyPrint());
 
         // Verificăm că statusul este 200 (success)
         Assertions.assertEquals(200, updateResponse.getStatusCode(), "Eroare la actualizarea contactului!");
