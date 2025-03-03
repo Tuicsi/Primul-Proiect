@@ -1,7 +1,4 @@
-BazaApi.class
-signup.class
-newcontact.class
-ApiCreateContact.class
 login.class
+signup.class
 Baza.class
-ApiUpdateContact.class
+newcontact.class
