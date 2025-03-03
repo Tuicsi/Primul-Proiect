@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class ApiUpdateContact extends ApiCreateContact {
 
 
-    @BeforeEach
+@BeforeEach
     public void setupBeforeUpdate() {
         
         if (createdContactId == null) {
