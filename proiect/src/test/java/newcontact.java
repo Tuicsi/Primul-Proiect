@@ -31,8 +31,8 @@ public class newcontact extends Baza{
         driver.get("https://thinking-tester-contact-list.herokuapp.com");
         WebElement email = driver.findElement(By.id("email"));
         WebElement pass = driver.findElement(By.id("password"));
-        email.sendKeys("georgefranarul@gmail.com");
-        pass.sendKeys("georgefranarul");
+        email.sendKeys("twixuldrept@gmail.com");
+        pass.sendKeys("twixuldrept");
         WebElement submit = driver.findElement(By.id("submit"));
         submit.click();
         System.out.println("[INFO] Logare efectuata cu success.");

@@ -37,8 +37,8 @@ public class login extends Baza{
         WebElement email = driver.findElement(By.id("email"));
         WebElement pass = driver.findElement(By.id("password"));
 
-        email.sendKeys("georgefranarul@gmail.com");
-        pass.sendKeys("georgefranarul");
+        email.sendKeys("twixuldrept@gmail.com");
+        pass.sendKeys("twixuldrept");
         
         System.out.println("[INFO] Am introdus datele pentru login.");
         
