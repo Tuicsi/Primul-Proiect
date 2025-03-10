@@ -7,12 +7,11 @@ public class BazaApi {
     protected static String authToken;
     private static String authUrl = "https://thinking-tester-contact-list.herokuapp.com/users/login"; // Endpoint-ul de login
    
-    private static String username = "georgefranarul@gmail.com";
-    private static String password = "georgefranarul";
+    private static String username = "twixuldrept@gmail.com";
+    private static String password = "twixuldrept";
 
 
     protected void authenticate() {
-        // Autentificare pentru a obține token-ul
         String loginData = "{"
                 + "\"email\": \"" + username + "\","
                 + "\"password\": \"" + password + "\""
@@ -25,10 +24,10 @@ public class BazaApi {
             
 
     if (authResponse.getStatusCode() == 200) {
-            authToken = authResponse.jsonPath().getString("token");  // presupunem că token-ul se află în câmpul "token"
-        System.out.println("Autentificare reușită! Token-ul obținut: " + authToken);
+            authToken = authResponse.jsonPath().getString("token"); 
+        System.out.println("Autentificare reusita! Token-ul obtinut: " + authToken);
     } else {
-        System.err.println("Autentificare eșuată!");
+        System.err.println("Autentificare esuata!");
     }
 
        

@@ -12,11 +12,14 @@ import org.junit.jupiter.api.Test;
     
     @BeforeEach
     public void setupbefore(){
+    System.out.println("Incepem procesul de autentificare...");
         authenticate();
     }
     
     @Test
     public void createContact() {
+        System.out.println("Se defineste contactul pentru creare...");
+
         String contactData = "{"
             + "\"firstName\": \"Ion\","
             + "\"lastName\": \"Popescu\","
@@ -30,17 +33,19 @@ import org.junit.jupiter.api.Test;
             + "\"postalCode\": \"0110001\","
             + "\"country\": \"Rumenia\""
             + "}";
+    System.out.println("Datele contactului: " + contactData);
 
+
+    System.out.println("Se trimite cererea POST pentru crearea contactului...");
     Response createResponse = RestAssured.given()
         .contentType(ContentType.JSON)
         .header("Authorization","Bearer " + authToken)
         .body(contactData)
         .post(baseurl);
 
-   
+    System.out.println("Raspunsul serverului: Status code = " + createResponse.getStatusCode());
 
     Assertions.assertEquals(201, createResponse.getStatusCode(), "Eroare la incercarea de creare a contactului");
-
-    createdContactId = createResponse.jsonPath().getString("_id");
+    System.out.println("Contactul a fost creat cu succes! Status code: " + createResponse.getStatusCode());
     }
 }

@@ -14,8 +14,10 @@ public class signup extends Baza {
         driver = Initialize();
     }
 
-  
-
+    @AfterEach
+    void tearDown() {
+        driver.quit();
+    }
     @Test
     @DisplayName("Test Signup - Verificare succes sau fail")
     void testPageSignUp() {
@@ -36,9 +38,9 @@ public class signup extends Baza {
         WebElement email = driver.findElement(By.id("email"));
         WebElement pass = driver.findElement(By.id("password"));
 
-        fname.sendKeys("Twixul2");
-        lname.sendKeys("Drept2");
-        email.sendKeys("twixuldrept2@gmail.com");
+        fname.sendKeys("Twixul");
+        lname.sendKeys("Drept");
+        email.sendKeys("twixuldrept@gmail.com");
         pass.sendKeys("twixuldrept");
 
         WebElement signupsubmit = driver.findElement(By.id("submit"));
