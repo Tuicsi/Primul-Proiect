@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.AfterEach;
+
 public class login extends Baza{
     
     WebDriver driver;
@@ -15,6 +17,11 @@ public class login extends Baza{
     void setUp() {
     driver = Initialize();
 }
+
+  @AfterEach
+    void tearDown() {
+        driver.quit();
+    }
 
     @Test
     @DisplayName("Verifică titlul paginii principale")

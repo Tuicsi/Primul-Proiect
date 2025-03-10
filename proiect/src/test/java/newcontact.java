@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.AfterEach;
+
 public class newcontact extends Baza{
 
     @BeforeEach
@@ -13,6 +15,11 @@ public class newcontact extends Baza{
         driver = Initialize();
         login();
     };
+
+      @AfterEach
+    void tearDown() {
+        driver.quit();
+    }
 
     void login() {
         driver.get("https://thinking-tester-contact-list.herokuapp.com");
