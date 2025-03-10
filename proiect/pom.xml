@@ -102,22 +102,6 @@
 
   <build>
     <plugins>
-<<<<<<< HEAD
-    <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <version>3.5.0</version>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>java</goal>
-                    </goals>
-                    <configuration>
-                        <mainClass>main.Main</mainClass> <!-- Specifică clasa ta principală aici -->
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
@@ -129,19 +113,6 @@
                 <useJUnitPlatform>true</useJUnitPlatform>
             </configuration>
         </plugin>
-=======
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>3.0.0-M5</version>
-            <configuration>
-                <includes>
-                    <include>**/*Test.java</include>
-                </includes>
-                <useJUnitPlatform>true</useJUnitPlatform>
-            </configuration>
-        </plugin>
->>>>>>> 8c82b824e9cb6017d95042bd250053ebc1d6b35f
     </plugins>
 </build>
 </project>
