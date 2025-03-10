@@ -3,8 +3,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+<<<<<<< HEAD
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+=======
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.time.Duration;
+
+import org.junit.jupiter.api.AfterEach;
+>>>>>>> 8c82b824e9cb6017d95042bd250053ebc1d6b35f
 
 public class newcontact extends Baza{
 
@@ -14,6 +26,7 @@ public class newcontact extends Baza{
         login();
     };
 
+<<<<<<< HEAD
     void login() {
         driver.get("https://thinking-tester-contact-list.herokuapp.com");
         WebElement email = driver.findElement(By.id("email"));
@@ -22,6 +35,23 @@ public class newcontact extends Baza{
         pass.sendKeys("georgefranarul");
         WebElement submit = driver.findElement(By.id("submit"));
         submit.click();
+=======
+      @AfterEach
+    void tearDown() {
+        driver.quit();
+    }
+
+    void login() {
+        System.out.println("[INFO] Deschis pagina de login.");
+        driver.get("https://thinking-tester-contact-list.herokuapp.com");
+        WebElement email = driver.findElement(By.id("email"));
+        WebElement pass = driver.findElement(By.id("password"));
+        email.sendKeys("twixuldrept@gmail.com");
+        pass.sendKeys("twixuldrept");
+        WebElement submit = driver.findElement(By.id("submit"));
+        submit.click();
+        System.out.println("[INFO] Logare efectuata cu success.");
+>>>>>>> 8c82b824e9cb6017d95042bd250053ebc1d6b35f
     }
 
     @Test
@@ -32,10 +62,19 @@ public class newcontact extends Baza{
         String actualtitle = driver.getTitle();
         assertEquals(expectedtitle, actualtitle, "Titlul paginii nu este cel asteptat");
 
+<<<<<<< HEAD
         WebElement addcontact = driver.findElement(By.id("add-contact"));
         addcontact.click();
             
         WebElement submitbtn = driver.findElement(By.id("submit"));
+=======
+        System.out.println("[INFO] Accesare formular pentru adaugarea unui contact.");
+        WebElement addcontact = driver.findElement(By.id("add-contact"));
+        addcontact.click();
+        
+        WebElement submitbtn = driver.findElement(By.id("submit"));
+        System.out.println("[INFO] Formular pentru adaugarea contactului deschis.");
+>>>>>>> 8c82b824e9cb6017d95042bd250053ebc1d6b35f
 
         WebElement firstName = driver.findElement(By.id("firstName"));
         WebElement lastName = driver.findElement(By.id("lastName"));
@@ -62,6 +101,18 @@ public class newcontact extends Baza{
         country.sendKeys("Tot pacolo");
 
         submitbtn.click();
+<<<<<<< HEAD
+=======
+        
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div/table/tr[1]")));
+
+
+        WebElement newContact = driver.findElement(By.xpath("/html/body/div/div/table/tr[1]"));
+        assertTrue(newContact.isDisplayed(), "Contactul nu a fost găsit pe pagină!");
+        System.out.println("[PASS] Contactul a fost adaugat cu succes!");
+        
+>>>>>>> 8c82b824e9cb6017d95042bd250053ebc1d6b35f
     }
 
 };
